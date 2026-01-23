@@ -3,6 +3,7 @@ package com.gestionStock.gestionStock.Controller;
 import com.gestionStock.gestionStock.Domain.Producto;
 import com.gestionStock.gestionStock.Model.ProductoRepository;
 import com.gestionStock.gestionStock.Service.ProductoService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public class ProductoRestController {
     public Producto postProducto(@RequestBody Producto producto){
             return productoservice.postProducto(producto);
 
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> putProducto(@RequestBody Producto producto, @PathVariable Long id){
+        return productoservice.putProducto(id,producto);
     }
 
 }
