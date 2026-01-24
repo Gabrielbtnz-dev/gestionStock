@@ -1,7 +1,6 @@
 package com.gestionStock.gestionStock.Controller;
 
 import com.gestionStock.gestionStock.Domain.Producto;
-import com.gestionStock.gestionStock.Model.ProductoRepository;
 import com.gestionStock.gestionStock.Service.ProductoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

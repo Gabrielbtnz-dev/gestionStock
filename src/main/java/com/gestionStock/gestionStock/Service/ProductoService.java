@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductoService {
@@ -25,6 +24,12 @@ public class ProductoService {
     public ResponseEntity<String> postProducto(Producto producto){
         if (producto.getNombre() == null  || producto.getNombre().isBlank() ){
           return  ResponseEntity.badRequest().body("El nombre es obligatorio");
+        }
+        if (producto.getControlaStock() == null){
+            return ResponseEntity.badRequest().body("El controla stock si/no es obligatorio");
+        }
+        if (producto.getIva() == null){
+            return ResponseEntity.badRequest().body("El iva de cada producto es obligatorio");
         }
         productoReposi.save(producto);
         return ResponseEntity.ok("Cliente agregado con exito");
