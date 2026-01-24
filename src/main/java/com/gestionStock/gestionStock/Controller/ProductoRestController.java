@@ -23,7 +23,7 @@ public class ProductoRestController {
     }
 
     @PostMapping
-    public Producto postProducto(@RequestBody Producto producto){
+    public ResponseEntity<String> postProducto(@RequestBody Producto producto){
             return productoservice.postProducto(producto);
 
     }

@@ -22,9 +22,12 @@ public class ProductoService {
         return productoReposi.findAll();
     }
 
-    public Producto postProducto(Producto producto){
+    public ResponseEntity<String> postProducto(Producto producto){
+        if (producto.getNombre() == null  || producto.getNombre().isBlank() ){
+          return  ResponseEntity.badRequest().body("El nombre es obligatorio");
+        }
         productoReposi.save(producto);
-        return producto;
+        return ResponseEntity.ok("Cliente agregado con exito");
     }
 
     public ResponseEntity<String> putProducto(Long id, Producto producto){
