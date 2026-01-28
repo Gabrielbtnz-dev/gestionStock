@@ -1,7 +1,12 @@
 package com.gestionStock.gestionStock.Domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "movimiento_stock")
 public class MovimientoStock {
     private Long id;
     private Long id_producto;
@@ -49,4 +54,5 @@ public class MovimientoStock {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
 }

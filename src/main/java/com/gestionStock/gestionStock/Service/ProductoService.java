@@ -18,7 +18,9 @@ public class ProductoService {
     }
 
     public List<Producto> getProductos(){
-        return productoReposi.findAll();
+        return productoReposi.findAll()
+                .stream().filter(Producto::getStatus)
+                .toList();
     }
 
     public ResponseEntity<String> postProducto(Producto producto){
