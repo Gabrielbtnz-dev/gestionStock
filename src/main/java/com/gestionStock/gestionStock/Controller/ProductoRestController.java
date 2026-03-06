@@ -4,6 +4,7 @@ import com.gestionStock.gestionStock.Domain.Producto;
 import com.gestionStock.gestionStock.Service.ProductoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import dto.ProductoDTO;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class ProductoRestController {
     }
 
     @PostMapping
-    public ResponseEntity<String> postProducto(@RequestBody Producto producto){
-            return productoservice.postProducto(producto);
+    public ResponseEntity<String> postProducto(@RequestBody ProductoDTO productoDTO){
+            return productoservice.postProducto(productoDTO);
 
     }
 

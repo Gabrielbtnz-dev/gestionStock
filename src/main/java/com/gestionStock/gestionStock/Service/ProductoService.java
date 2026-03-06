@@ -2,9 +2,9 @@ package com.gestionStock.gestionStock.Service;
 
 import com.gestionStock.gestionStock.Domain.Producto;
 import com.gestionStock.gestionStock.Model.ProductoRepository;
+import dto.ProductoDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,16 +23,21 @@ public class ProductoService {
                 .toList();
     }
 
-    public ResponseEntity<String> postProducto(Producto producto){
-        if (producto.getNombre() == null  || producto.getNombre().isBlank() ){
+    public ResponseEntity<String> postProducto(ProductoDTO pDTO){
+        if (pDTO.getNombre() == null  || pDTO.getNombre().isBlank() ){
           return  ResponseEntity.badRequest().body("El nombre es obligatorio");
         }
-        if (producto.getControlaStock() == null){
+        if (pDTO.getControlaStock() == null){
             return ResponseEntity.badRequest().body("El controla stock si/no es obligatorio");
         }
-        if (producto.getIva() == null){
+        if (pDTO.getIva() == null){
             return ResponseEntity.badRequest().body("El iva de cada producto es obligatorio");
         }
+        Producto producto = new Producto();
+        producto.setNombre(pDTO.getNombre());
+        producto.setPrecio(pDTO.getPrecio());
+        producto.setIva(pDTO.getIva());
+        producto.setControlaStock(pDTO.getControlaStock());
         productoReposi.save(producto);
         return ResponseEntity.ok("Cliente agregado con exito");
     }

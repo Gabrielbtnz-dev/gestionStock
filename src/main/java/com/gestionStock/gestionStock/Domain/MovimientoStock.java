@@ -1,13 +1,14 @@
 package com.gestionStock.gestionStock.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "movimiento_stock")
 public class MovimientoStock {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long id_producto;
     private BigDecimal cantidad;
